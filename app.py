@@ -37,9 +37,7 @@ def preprocess_text(text: str) -> List[str]:
 async def predict_topic(request: SentenceRequest):
     sentence = request.sentence
 
-    # Preprocess the sentence
     tokens = preprocess_text(sentence)
-    
     if not tokens:
         raise HTTPException(status_code=400, detail="The input sentence could not be processed into valid tokens.")
 
@@ -55,12 +53,29 @@ async def predict_topic(request: SentenceRequest):
     # Find the dominant topic
     dominant_topic = max(topic_probs, key=lambda x: x[1])
 
+    print(topic_probs)
+    return {
+        "sentence": sentence,
+        "dominant_topic": {
+        	"topic_id": int(dominant_topic[0]),
+        	"probability": float(dominant_topic[1]),
+        },
+        "topic_probabilities": [
+            {
+            	"topic_id": int(topic[0]),
+            	"probability": float(topic[1])
+            } for topic in topic_probs
+        ]
+    }
+
+    """
     return {
         "sentence": sentence,
         "dominant_topic": dominant_topic[0],
         "dominant_topic_probability": dominant_topic[1],
         "topic_probabilities": topic_probs
     }
+    """
 
 @app.get("/api/test")
 async def test():
