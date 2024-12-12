@@ -1,0 +1,51 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Virtual environment directories
+.venv/
+env/
+venv/
+ENV/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Dependency management
+Pipfile.lock
+poetry.lock
+*.egg-info/
+*.dist-info/
+
+# Logs
+*.log
+
+# Coverage reports
+.coverage
+*.coveragerc
+
+# FastAPI-specific
+*.db
+
+# MySQL and PostgreSQL databases
+*.sql
+*.sqlite
+
+# Temporary files
+*.bak
+*.swp
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# pytest cache directory
+.cache/
